@@ -1,0 +1,7 @@
+{
+    "ros.distro": "foxy",
+    "java.completion.filteredTypes" : [
+        "java.awt.List",
+        "com.sun.*"
+    ],
+}
