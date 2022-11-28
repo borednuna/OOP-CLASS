@@ -21,7 +21,7 @@ public class BallPanel extends JPanel implements KeyListener {
 		this.setPreferredSize(new Dimension(areaWidth, areaHeight));
 		
 		box = new BallArea(0, 0, width, height, Color.BLACK, Color.WHITE);
-		ballArray.add(new Ball(width, height, "A"));
+		ballArray.add(new Ball(width, height, "A")); // add ball A to the ball array
 		
 		//untuk mendapatkan ukuran area latar belakang jika frame diresize
 		this.addComponentListener(new ComponentAdapter() {
@@ -42,9 +42,11 @@ public class BallPanel extends JPanel implements KeyListener {
 		Thread gameThread = new Thread() {
 			public void run() {
 				while (true) {
+					// Nested iteration to check all the ball to all other ball
 					for (Ball ball : ballArray) {
 						ball.collide(box);
 						for (Ball ball2 : ballArray) {
+							// if ball & ball2 has the same pointer address, continue iteration
 							if (ball == ball2) continue;
 							ball.collideBalls(ball2);
 						}
@@ -65,6 +67,7 @@ public class BallPanel extends JPanel implements KeyListener {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		box.draw(g);
+		// draw each ball using iteration
 		for  (Ball ball : ballArray) {
 			ball.draw(g);
 			ball.drawStr(g);
@@ -73,6 +76,7 @@ public class BallPanel extends JPanel implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		// add ball to array everytime a key is pressed
 		ballArray.add(new Ball(areaWidth, areaHeight, String.valueOf(e.getKeyChar())));
 		
 	}

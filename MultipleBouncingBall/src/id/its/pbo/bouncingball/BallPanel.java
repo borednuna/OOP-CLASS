@@ -66,9 +66,11 @@ public class BallPanel extends JPanel {
 		Thread gameThread = new Thread() {
 			public void run() {
 				while (true) {
+					// Iterate to check all ball to all other ball
 					for (Ball ball : ballArray) {
 						ball.collide(box);
 						for (Ball ball2 : ballArray) {
+							// Skips if both ball has the same pointer address
 							if (ball == ball2) continue;
 							ball.collideBalls(ball2);
 						}
@@ -89,6 +91,7 @@ public class BallPanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		box.draw(g);
+		// Draw ball using iteration
 		for (Ball ball : ballArray) {
 			ball.draw(g);
 		}

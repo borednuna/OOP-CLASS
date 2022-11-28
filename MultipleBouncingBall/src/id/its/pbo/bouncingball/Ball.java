@@ -57,6 +57,7 @@ public class Ball {
 		float otherMinY = otherBall.y - otherBall.radius;
 		float otherMaxY = otherBall.y + otherBall.radius;
 
+		// check if the other balls rim is touching the balls rim, for further understanding please draw it yourself:) Goodluck
 		if (x + radius >= otherMinX && x - radius <= otherMaxX && y + radius >= otherMinY && y - radius <= otherMaxY) {
 			speedX = -speedX;
 			speedY = -speedY;

@@ -65,11 +65,13 @@ public class Ball {
 	}
 
 	public void collideBalls(Ball otherBall) {
+		// operate with radius so we get the rim of the ball
 		float otherMinX = otherBall.x - otherBall.radius;
 		float otherMaxX = otherBall.x + otherBall.radius;
 		float otherMinY = otherBall.y - otherBall.radius;
 		float otherMaxY = otherBall.y + otherBall.radius;
 
+		// check if the other balls rim is touching the balls rim, for further understanding please draw it yourself:) Goodluck
 		if (x + radius >= otherMinX && x - radius <= otherMaxX && y + radius >= otherMinY && y - radius <= otherMaxY) {
 			speedX = -speedX;
 			speedY = -speedY;
